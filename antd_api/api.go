@@ -10,7 +10,7 @@ import (
 	"strconv"
 
 	"github.com/gin-gonic/gin"
-	"github.com/longzhoufeng/go-core/logger"
+	log "github.com/longzhoufeng/go-logger"
 	"github.com/longzhoufeng/go-sdk/api"
 	"github.com/longzhoufeng/go-sdk/pkg"
 	"github.com/longzhoufeng/go-sdk/pkg/response/antd"
@@ -19,13 +19,13 @@ import (
 
 type Api struct {
 	Context *gin.Context
-	Logger  *logger.Helper
+	Logger  *log.Helper
 	Orm     *gorm.DB
 	Errors  error
 }
 
 // GetLogger 获取上下文提供的日志
-func (e Api) GetLogger() *logger.Helper {
+func (e Api) GetLogger() *log.Helper {
 	return api.GetRequestLogger(e.Context)
 }
 // GetOrm 获取Orm DB

@@ -10,12 +10,12 @@ require (
 	github.com/dgrijalva/jwt-go v3.2.0+incompatible
 	github.com/gin-gonic/gin v1.7.2
 	github.com/go-playground/locales v0.13.0
+	github.com/longzhoufeng/go-logger v1.0.1
 	github.com/go-playground/universal-translator v0.17.0
 	github.com/go-playground/validator/v10 v10.4.1
 	github.com/go-redis/redis/v7 v7.4.0
 	github.com/google/uuid v1.1.2
 	github.com/gorilla/websocket v1.4.2
-	github.com/longzhoufeng/go-core v1.0.3
 	github.com/longzhoufeng/go-core/pkg/gorm-adapter v0.0.0-20210730174759-4ee5e5a2ac3c
 	github.com/mojocn/base64Captcha v1.3.1
 	github.com/nsqio/go-nsq v1.0.8
@@ -29,6 +29,6 @@ require (
 )
 
 replace (
-	github.com/longzhoufeng/go-core/logger/zap => ../logger/zap
+	github.com/longzhoufeng/go-logger/zap => ../logger/zap
 	github.com/longzhoufeng/go-sdk => ../
 )

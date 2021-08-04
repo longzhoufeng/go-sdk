@@ -3,7 +3,7 @@ package service
 import (
 	"fmt"
 
-	"github.com/longzhoufeng/go-core/logger"
+	log "github.com/longzhoufeng/go-logger"
 	"gorm.io/gorm"
 )
 
@@ -11,7 +11,7 @@ type Service struct {
 	Orm   *gorm.DB
 	Msg   string
 	MsgID string
-	Log   *logger.Helper
+	Log   *log.Helper
 	Error error
 }
 

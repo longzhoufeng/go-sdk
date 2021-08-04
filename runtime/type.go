@@ -5,8 +5,8 @@ import (
 	"net/http"
 
 	"github.com/casbin/casbin/v2"
-	"github.com/longzhoufeng/go-core/logger"
 	"github.com/longzhoufeng/go-core/storage"
+	log "github.com/longzhoufeng/go-logger"
 	"github.com/robfig/cron/v3"
 	"gorm.io/gorm"
 )
@@ -28,8 +28,8 @@ type Runtime interface {
 	GetRouter() []Router
 
 	// SetLogger 使用go-core定义的logger，参考来源go-micro
-	SetLogger(logger logger.Logger)
-	GetLogger() logger.Logger
+	SetLogger(logger log.Logger)
+	GetLogger() log.Logger
 
 	// SetCrontab crontab
 	SetCrontab(key string, crontab *cron.Cron)

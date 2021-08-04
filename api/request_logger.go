@@ -1,11 +1,11 @@
 package api
 
 import (
+	logger "github.com/longzhoufeng/go-logger"
 	"strings"
 
 	"github.com/gin-gonic/gin"
 
-	"github.com/longzhoufeng/go-core/logger"
 	"github.com/longzhoufeng/go-sdk"
 	"github.com/longzhoufeng/go-sdk/pkg"
 )

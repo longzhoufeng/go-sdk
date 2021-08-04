@@ -7,8 +7,8 @@ import (
 	vd "github.com/bytedance/go-tagexpr/v2/validator"
 	"github.com/gin-gonic/gin"
 	"github.com/gin-gonic/gin/binding"
-	"github.com/longzhoufeng/go-core/logger"
 	"github.com/longzhoufeng/go-core/tools/language"
+	log "github.com/longzhoufeng/go-logger"
 	"github.com/longzhoufeng/go-sdk/pkg"
 	"github.com/longzhoufeng/go-sdk/pkg/response"
 	"github.com/longzhoufeng/go-sdk/service"
@@ -20,7 +20,7 @@ var DefaultLanguage = "zh-CN"
 
 type Api struct {
 	Context *gin.Context
-	Logger  *logger.Helper
+	Logger  *log.Helper
 	Orm     *gorm.DB
 	Errors  error
 }
@@ -42,7 +42,7 @@ func (e *Api) MakeContext(c *gin.Context) *Api {
 }
 
 // GetLogger 获取上下文提供的日志
-func (e Api) GetLogger() *logger.Helper {
+func (e Api) GetLogger() *log.Helper {
 	return GetRequestLogger(e.Context)
 }
 

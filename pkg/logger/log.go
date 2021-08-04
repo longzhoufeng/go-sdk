@@ -5,15 +5,13 @@ import (
 	"os"
 
 	"github.com/longzhoufeng/go-core/debug/writer"
-	"github.com/longzhoufeng/go-core/logger"
-	"github.com/longzhoufeng/go-core/logger/zap"
+	log "github.com/longzhoufeng/go-logger"
+	"github.com/longzhoufeng/go-logger/zap"
 	"github.com/longzhoufeng/go-sdk/pkg"
-
-	log "github.com/longzhoufeng/go-core/logger"
 )
 
 // SetupLogger 日志 cap 单位为kb
-func SetupLogger(opts ...Option) logger.Logger {
+func SetupLogger(opts ...Option) log.Logger {
 	op := setDefault()
 	for _, o := range opts {
 		o(&op)
@@ -38,22 +36,22 @@ func SetupLogger(opts ...Option) logger.Logger {
 	default:
 		output = os.Stdout
 	}
-	var level logger.Level
-	level, err = logger.GetLevel(op.level)
+	var level log.Level
+	level, err = log.GetLevel(op.level)
 	if err != nil {
 		log.Fatalf("get logger level error, %s", err.Error())
 	}
 
 	switch op.driver {
 	case "zap":
-		log.DefaultLogger, err = zap.NewLogger(logger.WithLevel(level), logger.WithOutput(output), zap.WithCallerSkip(2))
+		log.DefaultLogger, err = zap.NewLogger(log.WithLevel(level), log.WithOutput(output), zap.WithCallerSkip(2))
 		if err != nil {
 			log.Fatalf("new zap logger error, %s", err.Error())
 		}
 	//case "logrus":
 	//	setLogger = logrus.NewLogger(logger.WithLevel(level), logger.WithOutput(output), logrus.ReportCaller())
 	default:
-		log.DefaultLogger = logger.NewLogger(logger.WithLevel(level), logger.WithOutput(output))
+		log.DefaultLogger = log.NewLogger(log.WithLevel(level), log.WithOutput(output))
 	}
 	return log.DefaultLogger
 }

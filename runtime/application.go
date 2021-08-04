@@ -6,9 +6,9 @@ import (
 	"sync"
 
 	"github.com/casbin/casbin/v2"
-	"github.com/longzhoufeng/go-core/logger"
 	"github.com/longzhoufeng/go-core/storage"
 	"github.com/longzhoufeng/go-core/storage/queue"
+	log "github.com/longzhoufeng/go-logger"
 	"github.com/robfig/cron/v3"
 	"gorm.io/gorm"
 )
@@ -108,13 +108,13 @@ func (e *Application) setRouter() []Router {
 }
 
 // SetLogger 设置日志组件
-func (e *Application) SetLogger(l logger.Logger) {
-	logger.DefaultLogger = l
+func (e *Application) SetLogger(l log.Logger) {
+	log.DefaultLogger = l
 }
 
 // GetLogger 获取日志组件
-func (e *Application) GetLogger() logger.Logger {
-	return logger.DefaultLogger
+func (e *Application) GetLogger() log.Logger {
+	return log.DefaultLogger
 }
 
 // NewConfig 默认值

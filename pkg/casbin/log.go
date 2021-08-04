@@ -1,9 +1,8 @@
 package mycasbin
 
 import (
+	log "github.com/longzhoufeng/go-logger"
 	"sync/atomic"
-
-	"github.com/longzhoufeng/go-core/logger"
 )
 
 // Logger is the implementation for a Logger using golang log.
@@ -34,22 +33,22 @@ func (l *Logger) LogModel(model [][]string) {
 		}
 		str += "\n"
 	}
-	logger.DefaultLogger.Log(logger.InfoLevel, str)
+	log.DefaultLogger.Log(log.InfoLevel, str)
 }
 
 // LogEnforce log info related to enforce.
 func (l *Logger) LogEnforce(matcher string, request []interface{}, result bool, explains [][]string) {
-	logger.DefaultLogger.Fields(map[string]interface{}{
+	log.DefaultLogger.Fields(map[string]interface{}{
 		"matcher":  matcher,
 		"request":  request,
 		"result":   result,
 		"explains": explains,
-	}).Log(logger.InfoLevel, nil)
+	}).Log(log.InfoLevel, nil)
 }
 
 // LogRole log info related to role.
 func (l *Logger) LogRole(roles []string) {
-	logger.DefaultLogger.Fields(map[string]interface{}{
+	log.DefaultLogger.Fields(map[string]interface{}{
 		"roles": roles,
 	})
 }
@@ -60,17 +59,6 @@ func (l *Logger) LogPolicy(policy map[string][][]string) {
 	for k := range policy {
 		data[k] = policy[k]
 	}
-	logger.DefaultLogger.Fields(data).Log(logger.InfoLevel, nil)
+	log.DefaultLogger.Fields(data).Log(log.InfoLevel, nil)
 }
 
-//func (l *Logger) Print(v ...interface{}) {
-//	if l.IsEnabled() {
-//		logger.DefaultLogger.Log(logger.InfoLevel, v...)
-//	}
-//}
-//
-//func (l *Logger) Printf(format string, v ...interface{}) {
-//	if l.IsEnabled() {
-//		logger.DefaultLogger.Logf(logger.InfoLevel, format, v...)
-//	}
-//}
