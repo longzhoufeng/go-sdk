@@ -130,21 +130,21 @@ func NewConfig() *Application {
 	}
 }
 
-// SetCrontab 设置对应key的crontab
+// SetCrontab 设置对应key的crontab(定时任务)
 func (e *Application) SetCrontab(key string, crontab *cron.Cron) {
 	e.mux.Lock()
 	defer e.mux.Unlock()
 	e.crontab[key] = crontab
 }
 
-// GetCrontab 获取所有map里的crontab数据
+// GetCrontab 获取所有map里的crontab(定时任务)数据
 func (e *Application) GetCrontab() map[string]*cron.Cron {
 	e.mux.Lock()
 	defer e.mux.Unlock()
 	return e.crontab
 }
 
-// GetCrontabKey 根据key获取crontab
+// GetCrontabKey 根据key获取crontab(定时任务)
 func (e *Application) GetCrontabKey(key string) *cron.Cron {
 	e.mux.Lock()
 	defer e.mux.Unlock()
