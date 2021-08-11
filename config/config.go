@@ -2,6 +2,7 @@ package config
 
 import (
 	"fmt"
+	"github.com/longzhoufeng/go-sdk/pkg"
 	"log"
 
 	"github.com/longzhoufeng/go-core/config"
@@ -32,7 +33,7 @@ func (e *Settings) OnChange() {
 
 func (e *Settings) Init() {
 	e.init()
-	log.Println("!!! config init")
+	log.Println(pkg.Green("!!! config init"))
 }
 
 func (e *Settings) init() {

@@ -107,7 +107,7 @@ func (c *Client) Write(cxt context.Context) {
 
 // 启动 websocket 管理器
 func (manager *Manager) Start() {
-	log.Printf("websocket manage start")
+	log.Println(pkg.Green("websocket manage start"))
 	for {
 		select {
 		// 注册
